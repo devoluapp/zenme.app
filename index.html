@@ -4,7 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZenMe - Transforme sua Rotina</title>
-  <style>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1220752876486783');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1220752876486783&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -143,9 +160,9 @@
       </p>
 
       <div class="form-box">
-        <form action="https://formtree.io/f/xeolqray" method="POST">
-          <input type="text" name="nome" placeholder="Como prefere ser chamado no ZenMe?" required>
-          <input type="email" name="email" placeholder="Receba suas primeiras afirmações diárias grátis" required>
+        <form action="https://formspree.io/f/xeolqray" method="POST">          
+          <input type="text" name="nome" placeholder="Como prefere ser chamado?" required>
+          <input type="email" name="email" placeholder="Email" required>
           <button type="submit">Quero começar minha transformação + 3 meses grátis</button>
         </form>
         <p class="form-note">Vagas limitadas! Esta é sua chance de começar a sentir.</p>
