@@ -54,13 +54,24 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
+    .form-box form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .form-box input {
       width: 100%;
       padding: 12px;
-      margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 1rem;
+      box-sizing: border-box; /* <-- evita ultrapassar box */
+    }
+
+    .form-box input::placeholder {
+      font-size: 0.95rem;
+      white-space: normal; /* <-- quebra em telas pequenas */
     }
 
     .form-box button {
@@ -73,6 +84,7 @@
       font-size: 1rem;
       cursor: pointer;
       font-weight: bold;
+      box-sizing: border-box;
     }
 
     .form-box button:hover {
@@ -107,6 +119,9 @@
       .text-section h1 {
         font-size: 1.6rem;
       }
+      .form-box input::placeholder {
+        font-size: 0.85rem; /* menor para caber em telas pequenas */
+      }
     }
   </style>
 </head>
@@ -128,16 +143,18 @@
       </p>
 
       <div class="form-box">
-        <input type="text" placeholder="Como prefere ser chamado no ZenMe?">
-        <input type="email" placeholder="Receba suas primeiras afirmações diárias grátis">
-        <button>Quero começar minha transformação + 3 meses grátis</button>
+        <form action="https://formtree.io/f/xeolqray" method="POST">
+          <input type="text" name="nome" placeholder="Como prefere ser chamado no ZenMe?" required>
+          <input type="email" name="email" placeholder="Receba suas primeiras afirmações diárias grátis" required>
+          <button type="submit">Quero começar minha transformação + 3 meses grátis</button>
+        </form>
         <p class="form-note">Vagas limitadas! Esta é sua chance de começar a sentir.</p>
       </div>
     </div>
 
     <!-- Imagem -->
     <div class="image-section">
-      <img src="mulher-meditando.png" alt="imagem de mulher meditando com leve sorriso no rosto">
+      <img src="./mulher-meditando.png" alt="Meditação ZenMe">
     </div>
   </div>
 
