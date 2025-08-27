@@ -161,36 +161,54 @@
       </p>
 
       <div class="form-box">
-        <form action="https://recebedor-de-forms.vercel.app/api/submit" method="POST">
+        <form id="form-cadastro">
           <input type="hidden" name="id_landing_page" value="Minha Landing Page X">
           <input type="hidden" name="oferta" value="afirmações diárias e 3 meses gratuitos">
           <input type="text" name="nome" placeholder="Como prefere ser chamado?" required>
           <input type="email" name="email" placeholder="Email" required>
-          <button id="btn-cadastrar" type="submit">Quero começar minha transformação + 3 meses grátis</button>
+          <button button type="submit" name="acao" value="cadastro">Quero começar minha transformação + 3 meses grátis</button>
         </form>
         <p class="form-note">Vagas limitadas! Esta é sua chance de começar a sentir.</p>
       </div>
     </div>
+    <script>
+  const form = document.getElementById("meu-form");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // pega qual botão disparou o submit
+    const acao = e.submitter?.value; // "cadastro" ou "contato"
+    console.log("Botão clicado:", acao);
+    if(acao === "cadastro") {
+      try {
+        const response = await fetch("https://recebedor-de-forms.vercel.app/api/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...data, acao: acao }) // envia junto qual botão
+        });
+
+        if (response.ok) {
+          const params = new URLSearchParams({ nome: data.nome }).toString();
+          window.location.href = `./cadastrado.html?${params}`;
+        } else {
+          alert("Erro ao enviar o formulário.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Falha de conexão.");
+      }
+    }
+  });
+</script>
 
     <!-- Imagem -->
     <div class="image-section">
       <img src="./mulher-meditando.png" alt="Meditação ZenMe">
     </div>
   </div>
-    <!-- SCRIPT DO EVENTO CUSTOMIZADO -->
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const btn = document.getElementById('btn-cadastrar');
-          if (btn) {
-            btn.addEventListener('click', function() {
-              fbq('trackCustom', 'Cadastrar', {
-                channel: 'group',
-                intent: 'lead'
-              });
-            });
-          }
-        });
-      </script>
-      <!-- FIM DO SCRIPT DO EVENTO CUSTOMIZADO -->
 </body>
 </html>
