@@ -197,12 +197,10 @@
 
           if (response.ok) {
             const params = new URLSearchParams({ nome: data.nome }).toString();
-            
             window.location.href = "./cadastrado.html?" + params;
             
           } else {
-            msg.textContent = erro.error || "Erro ao enviar o formulário.";
-            console.log.log(erro);
+            msg.textContent = response.error || "Erro ao enviar o formulário.";
           }
         } catch (err) {
           console.error(err);
