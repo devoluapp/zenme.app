@@ -167,17 +167,18 @@
           <input type="text" name="nome" placeholder="Como prefere ser chamado?" required>
           <input type="email" name="email" placeholder="Email" required>
           <button button type="submit" name="acao" value="cadastro">Quero começar minha transformação + 3 meses grátis</button>
+          <p id="form-mensagem" style="color: red; margin-top: 10px;"></p>
         </form>
         <p class="form-note">Vagas limitadas! Esta é sua chance de começar a sentir.</p>
       </div>
     </div>
   <script>
     const form = document.getElementById("form-cadastro");
-
+    const msg = document.getElementById("form-mensagem");
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
       console.log("Cheguei aqui");
-
+      msg.textContent = ""; // limpa mensagem anterior
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
@@ -200,11 +201,11 @@
             window.location.href = "./cadastrado.html?" + params;
             
           } else {
-            alert("Erro ao enviar o formulário.");
+            msg.textContent = erro.error || "Erro ao enviar o formulário.";
           }
         } catch (err) {
           console.error(err);
-          alert("Falha de conexão.");
+          msg.textContent = "Falha de conexão. Tente novamente.";
         }
       }
     });
