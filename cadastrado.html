@@ -143,22 +143,18 @@
   </style>
 </head>
 <body>
-  <script>
-  const params = new URLSearchParams(window.location.search);
-  const nome = params.get("nome");
-
-  document.getElementById("mensagem").textContent =
-    `<h1>Obrigado, ${nome}! Recebemos seus dados!.</h1>
-    <p>Cadastro realizado com sucesso!</p>
-    <p>Obrigado por se inscrever no ZenMe. Você receberá um email em breve com 
-      mais informações para começar sua transformação.</p>
-    `;
-  </script>
   <div class="container">
     <!-- Texto -->
     <div id="mensagem" class="text-section">
-      
-
+      <h1>Obrigado, <b id="nome">${nome}</b>! Recebemos seus dados!</h1>
+      <p>Cadastro realizado com sucesso!</p>
+      <p>Obrigado por se inscrever no ZenMe. Você receberá um email em breve com 
+        mais informações para começar sua transformação.</p>
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    const nome = params.get("nome");
+    document.getElementById("nome").textContent = nome ? nome : "Visitante";
+    </script>
     </div>
 </body>
 </html>
