@@ -196,9 +196,9 @@
 
           if (response.ok) {
             const params = new URLSearchParams({ nome: data.nome }).toString();
-            console.log(params)
-            window.location.href = window.location.origin + "/cadastrado.html?" + params;
-            console.log(window.location.href);
+            
+            window.location.href = "/cadastrado.html?" + params;
+            
           } else {
             alert("Erro ao enviar o formulário.");
           }
